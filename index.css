@@ -1,0 +1,88 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'League Spartan',' sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    display: grid;
+    grid-template-areas: 
+        'cabecera cabecera cabecera cabecera cabecera cabecera'
+        'contenido contenido contenido contenido contenido contenido'
+        'pie pie pie pie pie pie'; 
+        background-color: blanchedalmond;
+}
+header{
+    grid-area: cabecera;
+    display: flex;
+    flex-flow: row;
+    background-color: blanchedalmond;
+    height: 20vh        ;
+    align-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.titulo{
+    margin: 10px;
+    align-content: center;
+    text-align: center;
+    color: black;
+    font-family: 'Spartan League', sans-serif;
+}
+.menu{
+    flex: 40%;
+    align-content: center;
+    text-align: center;
+}
+.menu a{
+    align-content: center;
+    text-align: center;
+    border: solid 2px black;
+    border-radius:5px;
+    padding: 20px;
+    margin: 0px 20px;
+    text-transform: uppercase;
+    transition: color 1s;
+}
+.menu a:hover{
+    background-color: brown;
+}
+.active{
+    background-color: brown;
+}
+section{
+    grid-area: contenido;
+    height: 65vh;
+    background: url(lm/images/web.jpg) no-repeat fixed center;
+}
+.contenido img{
+    height: 100%;
+    width: 100%
+}
+footer{
+    grid-area: pie;
+    display: flex;
+    height: 15vh;
+    background-color: blanchedalmond;
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+footer h4{
+    font-family: 'Spartan League', sans-serif;
+    padding: 0px 40px;
+}
+footer p{
+    font-family: 'Spartan League', sans-serif;
+    padding: 0px 40px;
+}
+
+
+@media (max-width: 1200px){
+    .titulo{
+        display: none;
+    }
+}
