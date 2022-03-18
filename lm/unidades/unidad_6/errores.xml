@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE errores [
+<!ELEMENT errores (fichero+)>
+<!ELEMENT fichero (error+)>
+<!ELEMENT error (linea, descripcion)>
+<!ELEMENT linea (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ATTLIST fichero nombre CDATA #REQUIRED>
+<!ATTLIST error tipo (t1 | t2) #REQUIRED>
+]>
+<errores>
+    <fichero nombre="ejercicio5.xml">
+     <error tipo="t1">
+        <linea>2</linea>
+        <descripcion>Falta el DOCTYPE al principio del fichero</descripcion>
+      </error>
+      <error tipo="t2">
+        <linea>13</linea>
+        <descripcion>Falta elemento ciudad</descripcion>
+      </error>
+    </fichero>
+    <fichero nombre="ejercicio6.xml">
+      <error tipo="t1">
+        <linea>2</linea>
+        <descripcion>Falta atributo id en persona</descripcion>
+      </error>
+      <error tipo="t2">
+        <linea>4</linea>
+        <descripcion>Falta etiqueta de cierre de tlf</descripcion>
+      </error>
+      <error tipo="t1">
+        <linea>2</linea>
+        <descripcion>Falta atributo raiz</descripcion>
+      </error>
+      <error tipo="t2">
+        <linea>7</linea>
+        <descripcion>Falta elemento tw</descripcion>
+      </error>
+    </fichero>
+    <fichero nombre="ejercicio6.dtd">
+      <error tipo="t2">
+        <linea>6</linea>
+        <descripcion>Falta definir elemento tw</descripcion>
+      </error>
+    </fichero>
+</errores>
