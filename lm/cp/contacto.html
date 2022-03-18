@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Turismo Córdoba</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Córdoba ciudad patrimonio">
+        <meta name="keywords" content="Turismo, patrimonio, viajes">
+        <link  rel="icon" href="images/cordoba_patrimonio.png" type="image/png" />
+        <link rel="stylesheet" href="contacto.css">
+    </head>
+    <body>
+        <header>
+            <h1 id="top">Córdoba Ciudad Patrimonio</h1>
+        </header>
+        <nav>
+                <a href="index.html">Inicio</a> 
+                <a href="mezquita.html">La Mezquita</a> 
+                <a href="casco_historico.html">Casco Histórico</a> 
+                <a href="los_patios.html">Los Patios</a>
+                <a href="medina_azahara.html">Medina Azahara</a>
+                <a href="contacto.html">Contacto</a> 
+            
+        </nav>
+        <hr>
+        <main>
+            <section>
+                <form name="formulario" method="get" action="mailto:a19camoan@iesgrancapitan.org">
+                    <p><label>Nombre: <input type="text" name="nombre" maxlength="15"></label></p>
+                    <p>
+                        Sexo: <br>
+                        <label><input type="radio" name="sexo" value="1">Mujer</label><br>
+                        <label><input type="radio" name="sexo" value="2">Hombre</label>
+                </p>
+                    <p><label>Edad: <input type="number" name="edad"></label></p>
+                    <p><label>Correo: <input type="email" name="correo"></label></p>
+                    <p><label>Teléfono: <input type="tel" name="telefono"></label></p>
+                    <p><label>Nacionalidad: <input type="text" name="nacionalidad" maxlength="15"></label></p>
+                    <textarea name="introducir_mensaje" class="texto_mensaje" id="mensaje" placeholder="Deje aquí su mensaje"></textarea>
+                    <p><input type="submit" value="Enviar"></p>
+                </form>
+            </section>
+        </main>
+    </body>
+</html>
