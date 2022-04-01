@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<reyes>
+  <pais>
+    <nombre>Gran Bretaña</nombre>
+    <capital>Londres</capital>
+    <nombre_reina>Isabel II del Reino Unido</nombre_reina>
+  </pais>
+    <pais>
+    <nombre>Francia</nombre>
+    <capital>Paris</capital>
+  </pais>
+  <pais>
+    <nombre>Noruega</nombre>
+    <capital>Oslo</capital>
+    <nombre_rey>Harald V de Noruega</nombre_rey>
+    <nombre_reina>Sonia</nombre_reina>
+  </pais>
+</reyes>
