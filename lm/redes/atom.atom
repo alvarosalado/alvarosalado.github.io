@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Ejercicios Álvaro Salado Palomares</title>
+<link rel="alternate" type="text/xml" href="atom.atom"/>
+<id>https://alvarosalado.github.io/index.html</id>
+
+<entry>
+    <title>Ejercicios XHTML</title>
+    <link href="../unidades/unidad_6/unidad6.html"/>
+    <id>https://juanrita.github.io/lm/unidades/unidad6/unidad6.html</id>
+    <summary>Aqui encontraras todos los ejercicios xml del modulo.</summary>
+</entry>
+<entry>
+    <title>Ejercicios XML - DTD - XSD</title>
+    <link href="../unidades/unidad_7/unidad7.html"/>
+    <id>https://juanrita.github.io/lm/unidades/unidad7/unidad7.html</id>
+    <summary>Aqui encontraras todos los ejercicios xml del modulo.</summary>
+</entry>
+<entry>
+    <title>Ejercicios XSLT</title>
+    <link href="../unidades/unidad_9/unidad9.html"/>
+    <id>https://juanrita.github.io/lm/unidades/unidad9/unidad9.html</id>
+    <summary>Aqui encontraras todos los ejercicios xml del modulo.</summary>
+</entry>
+<entry>
+    <title>Ejercicios XQUERY</title>
+    <link href="../unidades/unidad_10/unidad10.html"/>
+    <id>https://juanrita.github.io/lm/unidades/unidad10/unidad10.html</id>
+    <summary>Aqui encontraras todos los ejercicios xml del modulo.</summary>
+</entry>
+</feed>

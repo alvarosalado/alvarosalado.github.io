@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>Ejercicios de HTML - Álvaro Salado Palomares</title>
+  <link>https://alvarosalado.github.io/index.html</link>
+  <description>Actividad XML</description> 
+  <item>
+    <title>Ejercicios De HTML - Álvaro Salado Palomares</title>
+    <link>https://alvarosalado.github.io/lm/unidades/unidad_3/actividades.html</link>
+    <description>Aqui podemos encontrar todas las actividades que hemos ido haciendo durante todo 
+      el curso de HTML.
+    </description>
+  </item>
+  <item>
+    <title>Las Recetas de la Abuela</title>
+    <link>https://alvarosalado.github.io/lm/recetas/index.html</link>
+    <description>Esta es la página web que hicimos en el segundo trimestre con las recetas de la abuela,
+      esta página fue creada con bootstrap
+    </description>
+  </item>
+  <item>
+    <title>Córdoba Ciudad Patrimonio</title>
+    <link>https://alvarosalado.github.io/lm/cp/index.html</link>
+    <description>Página Web sobre Córdoba que la hemos ido creando durante todo el curso. En ella podrás encontrar muchas
+      de las obras de arte que tiene nuestra ciudad.
+    </description>
+  </item>
+</channel>
+
+</rss>
