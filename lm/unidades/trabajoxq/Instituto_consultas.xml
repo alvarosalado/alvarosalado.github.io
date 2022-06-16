@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ies>
+  <nombre>IES Gran Capitán</nombre>
+  <web>http://www.iesgrancapitan.org</web>
+  <n_clases>30</n_clases>
+  <profesores>
+    <profesor>
+      <nombre>Rafael Lozano</nombre>
+      <asignatura>ISO</asignatura>
+      <edad>45</edad>
+      <salario>1500</salario>
+    </profesor>
+        <profesor>
+      <nombre>Amelia Gonzalez</nombre>
+      <asignatura>GBD</asignatura>
+      <edad>56</edad>
+      <salario>1200</salario>
+    </profesor>
+        <profesor>
+      <nombre>Lourdes Magarin</nombre>
+      <asignatura>PAR</asignatura>
+      <edad>40</edad>
+      <salario>1350</salario>
+    </profesor>
+  </profesores>
+  <ciclos>
+    <ciclo id="ASIR">
+      <nombre>Administración de Sistemas Informáticos en Red</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2009" />
+    </ciclo>
+    <ciclo id="DAW">
+      <nombre>Desarrollo de Aplicaciones Web</nombre>
+      <grado>Superior</grado>
+      <decretoTitulo año="2010" />
+    </ciclo>
+    <ciclo id="SMR">
+      <nombre>Sistemas Microinformáticos y Redes</nombre>
+      <grado>Medio</grado>
+      <decretoTitulo año="2008" />
+    </ciclo>
+  </ciclos>
+</ies>
