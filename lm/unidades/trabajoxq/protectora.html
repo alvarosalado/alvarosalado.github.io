@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Álvaro Salado Palomares</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+        background-color: slategray;
+        font-family: arial;
+    }
+    a {
+        color: black;
+    }
+    a:hover {
+        color: darkgray;
+    }
+    #h1 {
+      color: rgb(255, 255, 255)  ;
+    }
+      </style>
+
+</head>
+<body>
+  <h1 id="h1">Consultas Protectora</h1>
+  <h3><a href="Consultas_protectora.xml" download="Consultas_protectora.xml">Archivo XML</a></h3>
+  <h3><a href="Consultas_protectora.dtd" download="Consultas_protectora.dtd">Archivo DTD</a></h3>
+  <h3><a href="Consultas_protectora.xsd" download="Consultas_protectora.xsd">Archivo XSD</a></h3>
+</body>
+
+<div id="Consulta 1">
+  <h1>Consulta 1</h1>
+  <h3>1. Nombre de las mascotas que han entrado en centro en el año 2020 ordenadas por edad.</h3>
+    <code>
+
+    </code>
+  </div>
+  <img src="">
+
+    <div id="Consulta 2">
+     <h1>Consulta 2</h1>
+  <h3>2. Nombre y raza de los perros disponibles en la protectora.</h3>
+    <code>
+        for $mascotas  in doc("Consultas_protectora.xml")/protectora/mascotas/categoria/perro
+        return <perro>{$mascotas /nombre,$mascotas /raza}</perro>
+    </code>
+  </div>
+  <img src="../images/protectora1.png">
+
+    <div id="Consulta 3">
+    <h1>Consulta 3</h1>
+  <h3>3. Tratamientos realizados a la perra Filipa, mostrando los más recientes primero.</h3>
+    <code>
+        for $mascotas  in doc("Consultas_protectora.xml")/protectora/mascotas/categoria/perro[nombre="Filipa"]/cartilla_sanitaria/consulta
+        return $mascotas/descripcion
+    </code>
+  </div>
+  <img src="../images/protectora3.png">
+
+    <div id="Consulta 4">
+    <h1>Consulta 4</h1>
+  <h3>4. Veterinarios que han tratado a la gata Roma.</h3>
+    <code>
+        for $nombre in doc("Consultas_protectora.xml")/protectora/mascotas/categoria/gato[nombre='Roma']/cartilla_sanitaria/consulta/veterinario
+        return $nombre/nombre
+    </code>
+  </div>
+  <img src="../images/protectora4.png">
+
+    <div id="Consulta 5">
+    <h1>Consulta 5</h1>
+  <h3>5. Gasto total en consultas y gasto medio por consulta.<</h3>
+    <code>
+        let $gasto := doc ("Consultas_protectora.xml")/protectora/mascotas/categoria/gato/cartilla_sanitaria/consulta
+        return <media_total>{avg($gasto/importe)}, {sum($gasto/importe)}</media_total>
+      </code>
+    </div>
+    <img src="../images/protectora5.png">
+
+      <div id="Consulta 6">
+    <h1>Consulta 6</h1>
+  <h3>6. Tratamiento y mascota con la consulta más cara.</h3>
+    <code>
+
+    </code>
+  </div>
+  <img src="">
+
+    <div id="Consulta 7">
+    <h1>Consulta 7</h1>
+  <h3>7. Categorías de mascotas y número de animales.</h3>
+    <code>
+
+    </code>
+  </div>
+  <img src="">
+
+
+    <div id="Consulta 8">
+    <h1>Consulta 8</h1>
+  <h3>8. Número de mascotas que entraron en la protectora en el año 2020</h3>
+    <code>
+
+    </code>
+  </div>
+  <img src="">
+
+    <div id="Consulta 9">
+    <h1>Consulta 9</h1>
+  <h3>9. Nombres de los pastores alemanes.</h3>
+    <code>
+        for $nombre in doc ("Consultas_protectora.xml")/protectora/mascotas/categoria/perro[raza="Pator Alemán"]
+        return $nombre/nombre
+    </code>
+  </div>
+  <img src="../images/protectora9.png">
+    
+    <div id="Consulta 10">
+    <h1>Consulta 10</h1>
+  <h3>10. Mascotas que todavía no han sido desparasitadas.</h3>
+    <code>
+
+    </code>
+  </div>
+  <img src="">
+    
+</body>
+</html>

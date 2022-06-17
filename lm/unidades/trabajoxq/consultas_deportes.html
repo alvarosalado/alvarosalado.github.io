@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Álvaro Salado Palomares</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+        background-color: slategray;
+        font-family: arial;
+    }
+    a {
+        color: black;
+    }
+    a:hover {
+        color: darkgray;
+    }
+    #h1 {
+      color: rgb(255, 255, 255)  ;
+    }
+      </style>
+</head>
+<body>
+  <h1 id="h1">Consultas Deportes</h1>
+  <h3><a href="ejerciciosdeportes.xml" download="ejerciciosdeportes.xml">Archivo XML</a></h3>
+  <h3><a href="ejerciciosdeportes.dtd" download="ejerciciosdeportes.dtd">Archivo DTD</a></h3>
+  <h3><a href="ejerciciosdeportes.xsd" download="ejerciciosdeportes.xsd">Archivo XSD</a></h3>
+
+  <div id="Consulta 1">
+   <h1>Consulta 1</h1>
+  <h3>1. Mostrar el nombre de los equipos.</h3>
+    <code>
+     for $nombre in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/nombre/text()
+    return <nombre>{$nombre}</nombre>
+    </code>
+  </div>
+  <img src="../images/d1.png">
+
+  <div id="Consulta 2">
+  <h1>Consulta 2</h1>
+  <h3>2.Mostrar los jugadores cuya edad sea mayor o igual a 28.</h3>
+    <code>
+for $edad in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador[edad>=28]
+return $edad
+    </code>
+  </div>
+  <img src="../images/d2.png">
+
+    <div id="Consulta 3">
+     <h1>Consulta 3</h1>
+  <h3>3.Muestra los nombres de los entrenadores de los equipos</h3>
+    <code>
+for $entrenador in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/entrenador
+return $entrenador
+    </code>
+  </div>
+  <img src="../images/d3.png">
+
+    <div id="Consulta 4">
+     <h1>Consulta 4</h1>
+  <h3>4. Mostrar sólo el nombre sin atributos de los jugadores cuya edad sea menor o igual a 28</h3>
+<code>
+    for $jugador in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador[edad<=28]
+    return <nombre>{$jugador/nombre/text()}</nombre>
+</code>
+</div>
+<img src="../images/d4.png">
+
+<div id="Consulta 5">
+     <h1>Consulta 5</h1>
+  <h3>5.Muestra los jugadores con la nacionalidad chilena.</h3>
+    <code>
+   for $jugador in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador[nacionalidad="chilena"]
+    return <nombre>{$jugador/nombre/text()}</nombre>
+    </code>
+  </div>
+  <img src="../images/d5.png">
+
+    <div id="Consulta 6">
+     <h1>Consulta 6</h1>
+  <h3>6.Muestra la edad máxima y mínima de los jugadores</h3>
+    <code>
+let $max := max( doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador/edad), 
+    $min := min( doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador/edad)
+return
+<resultado>
+  <max>{$max}</max>
+  <min>{$min}</min>
+</resultado>
+    </code>
+  </div>
+  <img src="../images/d6.png">
+
+    <div id="Consulta 7">
+     <h1>Consulta 7</h1>
+  <h3>7.Mostrar los nombres de los jugadores que acaben en "g"</h3>
+    <code>
+for $jugador in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo/jugadores/jugador
+where ends-with($jugador/nombre, "g")
+return $jugador
+    </code>
+  </div>
+  <img src="../images/d7.png">
+
+    <div id="Consulta 8">
+     <h1>Consulta 8</h1>
+  <h3>8.Muestra los datos de los equipos que contienen un E mayúscula o minúscula en su nombre.</h3>
+    <code>
+for $equipo in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo
+where contains($equipo/nombre, "e") or contains($equipo/nombre, "E")
+order by $equipo/nombre descending
+return $equipo
+    </code>
+  </div>
+  <img src="../images/d8.png">
+
+    <div id="Consulta 9">
+     <h1>Consulta 9</h1>
+  <h3>9.Muestra nombre de el equipo y el número de caracteres que tiene cada nombre.</h3>
+    <code>
+for $equipo in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo
+return 
+  <nombre>
+    {$equipo/nombre}
+    <length>{string-length($equipo/nombre)}</length>
+  </nombre>
+    </code>
+  </div>
+  <img src="../images/d9.png">
+
+    <div id="Consulta 10">
+     <h1>Consulta 10</h1>
+  <h3>10.Muestra el nombre de los equipos en una tabla</h3>
+    <code>
+<table>
+{
+  for $equipo in doc("ejerciciosdeportes.xml")/equipos_de_futbol/equipo
+  return
+    <tr>
+      <td>{$equipo/nombre/text()}</td>
+    </tr>
+}
+</table>
+    </code>
+  </div>
+  <img src="../images/d10.png">

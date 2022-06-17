@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Álvaro Salado Palomares</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+        background-color: slategray;
+        font-family: arial;
+    }
+    a {
+        color: black;
+    }
+    a:hover {
+        color: darkgray;
+    }
+    #h1 {
+      color: rgb(255, 255, 255)  ;
+    }
+      </style>
+
+</head>
+<body>
+  <h1 id="h1">Consultas Examen</h1>
+  <h3><a href="saladopalomaresalvaro.xml" download="saladopalomaresalvaro.xml">Archivo XML</a></h3>
+  <h3><a href="saladopalomaresalvaro.xml" download="saladopalomaresalvaro.xml">Archivo DTD</a></h3>
+  <h3><a href="saladopalomaresalvaro.xsd" download="saladopalomaresalvaro.xsd">Archivo XSD</a></h3>
+</body>
+
+<div id="Consulta 1">
+  <h1>Consulta 1</h1>
+  <h3>1. Obtener la marca, modelo y precio de los vehículos que cuesten igual o mas de 87000 €.</h3>
+    <code>
+      for $vehiculo in doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo[precio >=8700]
+      return <coche>{$vehiculo/marca, $vehiculo/modelo, $vehiculo/precio}</coche>
+    </code>
+  </div>
+  <img src="../images/1.png">
+
+    <div id="Consulta 2">
+     <h1>Consulta 2</h1>
+  <h3>2. Obtener el nif, nombre y el teléfono de los renting que han adquirido más de dos unidades de un "Tesla Model 3"
+en el 2020. (No sabemos su código, sólo el nombre del vehículo).</h3>
+    <code>
+      let $modelo := doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo[marca="Tesla" and modelo = "Model 3"]/@cod
+for $cliente in doc("saladopalomaresalvaro.xml")/salon/clientes/cliente
+let $compra := doc("saladopalomaresalvaro.xml")/salon/compras/cantidad[@vehiculo =$modelo and .>2 and contains(@fechacompra,"2020")]
+where $cliente/@nif = $compra/@cliente 
+return
+<renting nif="{$cliente/@nif}">
+    {$cliente/nombre}
+    {$cliente/telefono}
+</renting>
+    </code>
+  </div>
+  <img src="../images/2.png">
+
+    <div id="Consulta 3">
+    <h1>Consulta 3</h1>
+  <h3>3. Obtener los modelos de todos los vehículos, ordenados primero por orden alfabético ascendente (marca primero y
+modelo después) y luego por precio (de menor a mayor).</h3>
+    <code>
+      for $coche in doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo
+order by $coche/marca, $coche/modelo, $coche/precio
+return
+<vehiculos>
+    {$coche}
+</vehiculos>
+    </code>
+  </div>
+  <img src="../images/3.png">
+
+    <div id="Consulta 4">
+    <h1>Consulta 4</h1>
+  <h3>4. Obtener (usando let) el número total de modelos diferentes ofertados y el coste total de comprar dos unidades de
+cada uno de ellos.</h3>
+    <code>
+      let $contador := count(distinct-values(doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo))
+      let $preciototal := sum(doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo/precio)
+      return
+      <ejercicio>
+        <resultado>
+          <modelostotales>{$contador}</modelostotales>
+          <calculototal>{$preciototal*2} </calculototal>
+        </resultado>
+      </ejercicio>
+    </code>
+  </div>
+  <img src="../images/4.png">
+
+    <div id="Consulta 5">
+    <h1>Consulta 5</h1>
+  <h3>5. Obtener la marca y el modelo de los vehículos que cuestan menos de 40000€, su precio unitario, el número total de
+veces que ha sido comprado, así como el valor de esas ventas en €.</h3>
+    <code>
+      for $vehiculo in doc("saladopalomaresalvaro.xml")/salon/vehiculos/vehiculo
+      let $ventas :=sum(doc("saladopalomaresalvaro.xml")/salon/compras/cantidad[@vehiculo=$vehiculo/@cod])
+      where $vehiculo/precio <= 40000
+      return
+        <vehiculo>
+          <marca>{$vehiculo/marca/text()}</marca>
+          <modelo>{$vehiculo/modelo/text()}</modelo>
+          {$vehiculo/precio}
+          <ventas>{$ventas}</ventas>
+          <dinerototal>{$vehiculo/precio * $ventas}</dinerototal>
+        </vehiculo>
+      </code>
+    </div>
+    <img src="../images/5.png">
+
+      <div id="Consulta 6">
+    <h1>Consulta 6</h1>
+  <h3>6. Obtener el mayor y menor salario de los gestores.</h3>
+    <code>
+      let $salariomayor := max(doc("concesionario.xml")/salon/gestores/gestor/salario)
+let $salariomenor := min(doc("concesionario.xml")/salon/gestores/gestor/salario)
+return
+<salarios>
+    <mayor>{$salariomayor}</mayor>
+    <menor>{$salariomenor}</menor>
+</salarios>
+    </code>
+  </div>
+  <img src="../images/6.png">
+
+    <div id="Consulta 7">
+    <h1>Consulta 7</h1>
+  <h3>7. Obtener, usando let, la suma de los salarios de los gestores que cobran mas de 900 €, que viven en la provincia de
+Jaén (excepto los que viven en la capital) y además no tienen código D.</h3>
+    <code>
+     let $sumasalarios := sum(doc("saladopalomaresalvaro.xml")//gestores/gestor[salario>900 and provincia ='Jaén' and localidad != 'Jaén' and not(@codigo[contains(@cod,'D')])]/salario)
+return <sumasalarios>{$sumasalarios}</sumasalarios>
+    </code>
+  </div>
+  <img src="../images/7.png">
+
+
+    <div id="Consulta 8">
+    <h1>Consulta 8</h1>
+  <h3>8. Obtener los nombres de todos los pilotos (ordenados alfabéticamente), eliminando los repetidos e indicar todas las
+demostraciones en las que participa.</h3>
+    <code>
+for $nombre in distinct-values(doc("saladopalomaresalvaro.xml")/salon/demostraciones/prueba/piloto)
+let $prueba := doc("saladopalomaresalvaro.xml")/salon/demostraciones/prueba[piloto = $nombre]/nombre
+order by $nombre
+return
+<pilotos>
+    <piloto>
+        <nombre>{$nombre}</nombre>
+        <pruebas>{$prueba}</pruebas>
+    </piloto>
+</pilotos>
+    </code>
+  </div>
+  <img src="../images/8.png">
+
+    <div id="Consulta 9">
+    <h1>Consulta 9</h1>
+  <h3>9. Obtener la media de los precios de todas los demostraciones, la suma de los precios de los demostraciones del
+circuito 3 y el total de plazas que se ofertan en los dos "Rallye".</h3>
+    <code>
+     let $media := avg(doc("saladopalomaresalvaro.xml")/salon/demostraciones/prueba/precio)
+     let $suma := sum(doc("saladopalomaresalvaro.xml")/salon/demostraciones/prueba[circuito = 3]/precio)
+     let $totalplazas := sum(doc("saladopalomaresalvaro.xml")/salon/demostraciones/prueba[contains(nombre, "Rallye")]/plazas)
+     return
+<coches>
+    <media>{$media}</media>
+    <suma>{$suma}</suma>
+    <plazas>{$totalplazas}</plazas>
+</coches>
+    </code>
+  </div>
+  <img src="../images/9.png">
+    
+    <div id="Consulta 10">
+    <h1>Consulta 10</h1>
+  <h3>10. Obtener el nombre de la prueba, su precio y el precio con un descuento del 25% para empleados del sector.
+Ordenar por el nombre de la prueba desde el texto más largo hasta el más corto.</h3>
+    <code>
+      for $prueba in doc("saladopalomaresalvaro.xml")//demostraciones/prueba
+order by string-length($prueba/nombre) descending
+return
+<prueba>
+    <nombre>{$prueba/nombre/text()}</nombre>
+    <precio>{$prueba/precio/text()}</precio>
+    <precioparaempleados>{$prueba/precio/text() * 0.75}</precioparaempleados>
+</prueba>
+    </code>
+  </div>
+  <img src="../images/10.png">
+    
+</body>
+</html>
